@@ -27,6 +27,8 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
         drawFaceBackground(canvas)
         drawEyes(canvas)
         drawMouth(canvas)
+
+        drawNose(canvas)
     }
 
     private fun drawFaceBackground(canvas: Canvas) {
@@ -47,6 +49,7 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
 
         // 5
         canvas.drawCircle(size / 2f, size / 2f, radius + borderWidth / 2f, paint)
+
     }
 
     private fun drawEyes(canvas: Canvas) {
@@ -83,6 +86,21 @@ class EmotionalFaceView(context: Context, attrs: AttributeSet) : View(context, a
         // 5
         canvas.drawPath(mouthPath, paint)
 
+    }
+
+    private fun drawNose(canvas: Canvas) {
+
+        val nosePath = Path()
+
+        nosePath.moveTo(size * 0.50f, size * 0.50f)
+
+        nosePath.quadTo(size * 0.40f, size * 0.65f, size * 0.55f, size * 0.65f)
+
+        // 1
+        paint.color = eyesColor
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = 6.0f
+        canvas.drawPath(nosePath, paint)
     }
 
 

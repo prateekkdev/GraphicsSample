@@ -11,12 +11,23 @@
         android:layout_height="wrap_content"
         android:text="Below is face" />
 
+
+    <com.example.prateek.sampleapp.MatrixPlay
+        android:id="@+id/matrix_play"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/textView">
+
+        <!--
     <com.example.prateek.sampleapp.EmotionalFaceView
         android:id="@+id/emotionalFaceView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/matrix_play"
         android:layout_centerInParent="true" />
+        -->
+
+    </com.example.prateek.sampleapp.MatrixPlay>
 
 
 </RelativeLayout>

@@ -21,11 +21,38 @@ class MatrixPlay(context: Context, attributeSet: AttributeSet) : View(context, a
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
+        drawCircle(canvas)
+        drawRect(canvas)
+    }
+
+    fun drawCircle(canvas: Canvas) {
+        paint.style = Paint.Style.FILL
+
+        canvas.drawCircle(drawRect.centerX(), drawRect.centerY(), 20f, paint)
+    }
+
+    fun drawRect(canvas: Canvas) {
+
         paint.color = borderColor
         paint.strokeWidth = borderWidth
         paint.style = Paint.Style.STROKE
 
-        canvas.drawRect(0f, 0f, drawRect.width() / 2f, drawRect.height() / 2f, paint)
+        var originalRect = RectF(drawRect.width() * 0.35f, drawRect.height() * 0.30f, drawRect.width() * 0.65f, drawRect.height() * 0.70f)
+
+        var otherRect = RectF()
+
+        var transformMatrix = Matrix()
+
+        transformMatrix.preTranslate(originalRect.width() / 2, 0f)
+        transformMatrix.preTranslate(0f, originalRect.height() / 2)
+
+        transformMatrix.postScale(0.5f, 0.5f, originalRect.centerX(), originalRect.centerY())
+
+        // transformMatrix.postRotate(30f)
+
+        transformMatrix.mapRect(otherRect, originalRect)
+
+        canvas.drawRect(otherRect, paint)
     }
 
 

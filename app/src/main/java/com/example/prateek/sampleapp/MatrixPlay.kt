@@ -48,11 +48,18 @@ class MatrixPlay(context: Context, attributeSet: AttributeSet) : View(context, a
 
         transformMatrix.postScale(0.5f, 0.5f, originalRect.centerX(), originalRect.centerY())
 
-        // transformMatrix.postRotate(30f)
+        transformMatrix.postRotate(90f, drawRect.centerX() + originalRect.width() / 2, drawRect.centerY() + originalRect.height() / 2)
 
-        transformMatrix.mapRect(otherRect, originalRect)
+        // transformMatrix.mapRect(otherRect, originalRect)
 
-        canvas.drawRect(otherRect, paint)
+
+        var path = Path()
+
+        path.addRect(originalRect, Path.Direction.CW)
+
+        path.transform(transformMatrix)
+
+        canvas.drawPath(path, paint)
     }
 
 
